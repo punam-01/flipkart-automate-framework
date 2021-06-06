@@ -1,1 +1,2 @@
 py.test -s -v flipkartautomate_tests.py --browser firefox
+git push origin master --force
