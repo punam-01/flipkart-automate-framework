@@ -3,11 +3,7 @@ import logging
 from base.basepage import BasePage
 import time
 
-
-
-
-
-class RegisterCoursesPage(BasePage):
+class AddProductPage(BasePage):
 
     log = cl.customLogger(logging.DEBUG)
 
@@ -47,21 +43,23 @@ class RegisterCoursesPage(BasePage):
             if handle not in parentHandle:
               self.driver.switch_to.window(handle)
 
-    def sedpicode(self, pi):
+    def sendpincode(self, pi):
         self.sendKeys(pi, self._pincode, locatorType="xpath")
-        self.elementClick(self.check,locatorType="xpath")
+        self.elementClick(self.check, locatorType="xpath")
 #        self.isElementDisplayed(self.check, locatorType="xpath")
 
     def addtocart(self):
+        self.webScroll("down")
         self.elementClick(self.order, locatorType="xpath")
         self.elementClick(self.order, locatorType="xpath")
-        element = self.waitForElement(self._continue, locatorType="xpath")
+        #time.sleep(4)
+        #element = self.waitForElement(self._continue, locatorType="xpath")
         self.elementClick(self._continue, locatorType="xpath")
-    def paymet(self):
+    def payment(self):
         self.webScroll("down")
         self.elementClick(self.credit, locatorType="xpath")
 
-    def payow(self):
+    def paynow(self):
         self.elementClick(self.to_pay, locatorType="xpath")
 
     def allf(self, name, pi):
@@ -72,7 +70,7 @@ class RegisterCoursesPage(BasePage):
         time.sleep(3)
         self.selectProduct()
         #time.sleep(3)
-        self.sedpicode(pi)
+        self.sendpincode(pi)
         #time.sleep(5)
         self.addtocart()
 

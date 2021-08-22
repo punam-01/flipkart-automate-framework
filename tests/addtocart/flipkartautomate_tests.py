@@ -1,14 +1,14 @@
-from pages.courses.flipkartautomate_page import RegisterCoursesPage
+from pages.addtocart.flipkartautomate_page import AddProductPage
 from utilities.teststatus import TestStatus
 import unittest
 import pytest
 
 @pytest.mark.usefixtures("oneTimeSetUp", "setUp")
-class RegisterCoursesTests(unittest.TestCase):
+class AddProductTests(unittest.TestCase):
 
     @pytest.fixture(autouse=True)
     def objectSetup(self, oneTimeSetUp):
-        self.product = RegisterCoursesPage(self.driver)
+        self.product = AddProductPage(self.driver)
         self.ts = TestStatus(self.driver)
 
     @pytest.mark.run(order=1)
